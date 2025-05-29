@@ -10,10 +10,11 @@
       text-align: center;
       padding: 20px;
     }
-    img {
+    img, iframe {
       max-width: 95%;
       height: auto;
       margin-bottom: 20px;
+      border: none;
     }
     .lang-btn {
       margin: 10px;
@@ -33,28 +34,34 @@
 
   <div>
     <button class="lang-btn" onclick="showLang('en')">English</button>
-    <button class="lang-btn" onclick="showLang('fr')">Inuinnaqtun</button>
+    <button class="lang-btn" onclick="showLang('inu')">Inuinnaqtun</button>
   </div>
 
   <div id="comic">
+    <!-- Start with English PNGs by default -->
     <img id="img1" src="Permafrost_Comics_EN-1.png" alt="Page 1">
     <img id="img2" src="Permafrost_Comics_EN-2.png" alt="Page 2">
   </div>
 
   <script>
     function showLang(lang) {
-      const img1 = document.getElementById('img1');
-      const img2 = document.getElementById('img2');
+      const comicDiv = document.getElementById('comic');
       const caption = document.getElementById('caption');
 
-      if (lang === 'Inuinnaqtun') {
-        img1.src = 'INU colors_P1.pdf';
-        img2.src = 'INU colors_P2.pdf';
-        caption.textContent = "Une bande dessinée inspirée d’un terrain dans l’Arctique près de Cambridge Bay.";
+      if (lang === 'inu') {
+        caption.textContent = "A comic inspired by Arctic fieldwork near Cambridge Bay, translated into Inuinnaqtun.";
+
+        comicDiv.innerHTML = `
+          <iframe src="INU%20colors_P1.pdf" width="90%" height="600px"></iframe>
+          <iframe src="INU%20colors_P2.pdf" width="90%" height="600px"></iframe>
+        `;
       } else {
-        img1.src = 'Permafrost_Comics_EN-1.png';
-        img2.src = 'Permafrost_Comics_EN-2.png';
-        caption.textContent = "A comic inspired by Arctic fieldwork near Cambridge Bay.";
+        caption.textContent = "A comic inspired by Arctic fieldwork near Cambridge Bay. Research project from Université de Sherbrooke.";
+
+        comicDiv.innerHTML = `
+          <img src="Permafrost_Comics_EN-1.png" alt="Page 1">
+          <img src="Permafrost_Comics_EN-2.png" alt="Page 2">
+        `;
       }
     }
   </script>
