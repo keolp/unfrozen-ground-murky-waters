@@ -6,24 +6,57 @@
   <style>
     body {
       font-family: sans-serif;
-      text-align: center;
       background-color: #f4f4f4;
-      margin: 0;
+      text-align: center;
       padding: 20px;
     }
-    iframe {
-      width: 90%;
-      height: 100vh;
-      margin-bottom: 40px;
+    img {
+      max-width: 95%;
+      height: auto;
+      margin-bottom: 20px;
+    }
+    .lang-btn {
+      margin: 10px;
+      padding: 8px 16px;
+      font-size: 16px;
+      cursor: pointer;
       border: none;
+      background-color: #333;
+      color: white;
+      border-radius: 5px;
     }
   </style>
 </head>
 <body>
   <h1>Murky River</h1>
-  <p>A comic inspired by Arctic fieldwork near Cambridge Bay. Artist credits : Élise Imbeau</p>
+  <p id="caption">A comic inspired by Arctic fieldwork near Cambridge Bay.</p>
 
-  <iframe src="INU colors_P1.pdf"></iframe>
-  <iframe src="INU colors_P2.pdf"></iframe>
+  <div>
+    <button class="lang-btn" onclick="showLang('en')">English</button>
+    <button class="lang-btn" onclick="showLang('fr')">Français</button>
+  </div>
+
+  <div id="comic">
+    <img id="img1" src="Permafrost_Comics_EN-1.png" alt="Page 1">
+    <img id="img2" src="Permafrost_Comics_EN-2.png" alt="Page 2">
+  </div>
+
+  <script>
+    function showLang(lang) {
+      const img1 = document.getElementById('img1');
+      const img2 = document.getElementById('img2');
+      const caption = document.getElementById('caption');
+
+      if (lang === 'Inuinnaqtun') {
+        img1.src = 'INU colors_P1.pdf';
+        img2.src = 'INU colors_P2.pdf';
+        caption.textContent = "Une bande dessinée inspirée d’un terrain dans l’Arctique près de Cambridge Bay.";
+      } else {
+        img1.src = 'Permafrost_Comics_EN-1.png';
+        img2.src = 'Permafrost_Comics_EN-2.png';
+        caption.textContent = "A comic inspired by Arctic fieldwork near Cambridge Bay.";
+      }
+    }
+  </script>
 </body>
 </html>
