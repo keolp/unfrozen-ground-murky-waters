@@ -93,7 +93,11 @@
     } else if (lang === 'fr') {
       title.textContent = "Traduction en cours !";
       description.textContent = "La version française est en préparation. Merci de votre patience !";
-      // Keep the current comic displayed (no image change)
+      
+      comicDiv.innerHTML = `
+        <img src="Permafrost Comics_FR-1.png" alt="Page 1">
+        <img src="Permafrost Comics_FR-2.png" alt="Page 2">
+      `;
     } else {
       title.textContent = "Unfrozen Ground, Murky Waters";
       description.textContent = "Welcome to this short comic, created in collaboration with local artists, scientists, and community members in Ikaluktutiak (Cambridge Bay). Through the eyes of young fishers and curious minds, it shares how the land is changing with permafrost thaw — and how we learn together, from both science and experience.";
